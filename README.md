@@ -8,15 +8,6 @@ Welcome to my application! This is a members-only project where users can access
 - Exclusive content: Members can enjoy special content that is not available to the general public.
 - Personalization: Members can customize their profiles and preferences.
 
-## Installation
-
-To install and run this application, follow these steps:
-
-1. Clone the repository: `git clone https://github.com/your-username/your-repo.git`
-2. Install dependencies: `npm install`
-3. Configure environment variables: Create a `.env` file and set the necessary variables.
-4. Start the application: `npm start`
-
 ## Usage
 
 Once the application is up and running, follow these steps to use it:
