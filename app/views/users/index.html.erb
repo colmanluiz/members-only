@@ -1,0 +1,16 @@
+<h2>Users</h2>
+
+<% @users.each do |user| %>
+
+  <%= link_to user_path(user) do %>
+  <p>
+    <%= user.id %> |
+    <%= user.name %> |
+    <%= user.email %> |
+    <% end %>
+  </p>
+<% end %>
+
+<div>
+  <%# <%= link_to "Create User", new_user_path %>
+</div>
