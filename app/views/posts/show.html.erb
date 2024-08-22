@@ -1,7 +1,7 @@
-<div class="post">
-  <h1 class="post-title"><%= @post.title %></h1>
-  <p class="post-body"><%= @post.body %></p>
-  <% if user_signed_in? %>
-    <p class="post-user"><%= @post.user.name %></p>
-  <% end %>
-</div>
+<h1><%= @post.title %></h1>
+
+<p><%= @post.body %></p>
+
+<p>Posted by: <%= @post.user.name %></p>
+
+<p>Posted on: <%= @post.created_at %></p>
