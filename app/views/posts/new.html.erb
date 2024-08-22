@@ -1,23 +1,25 @@
-<h1>Create a Post</h1>
+<main class="container mx-auto prose mt-5">
+  <h1 class="text-2xl font-bold mb-4">Create a Post</h1>
 
-<%= form_with model: @post do |f| %>
-	<% if f.object.errors.any? %>
-		<% f.object.errors.full_messages.each do |message| %>
-			<div><%= message %></div>
-		<% end%>
-	<% end %>
+  <%= form_with model: @post, class: "max-w-md" do |f| %>
+    <% if f.object.errors.any? %>
+      <% f.object.errors.full_messages.each do |message| %>
+        <div class="text-red-500 mb-2"><%= message %></div>
+      <% end %>
+    <% end %>
 
-  <div>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
+    <div class="mb-4">
+      <%= f.label :title, class: "block font-bold mb-2" %>
+      <%= f.text_field :title, class: "w-full border border-gray-300 rounded py-2 px-3" %>
+    </div>
 
-  <div>
-    <%= f.label :body %>
-    <%= f.text_area :body %>
-  </div>
+    <div class="mb-4">
+      <%= f.label :body, class: "block font-bold mb-2" %>
+      <%= f.text_area :body, class: "w-full border border-gray-300 rounded py-2 px-3" %>
+    </div>
 
-  <div>
-    <%= f.submit %>
-  </div>
-<% end %>
+    <div>
+      <%= f.submit "Create", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
+    </div>
+  <% end %>
+</main>

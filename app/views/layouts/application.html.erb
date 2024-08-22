@@ -5,30 +5,48 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <div><%= notice %></div>
-    <div><%= alert %></div>
-
-    <div>
-      <%= link_to "Homepage", root_path %>
-      <%= link_to "Users", users_path %>
-      <%= link_to "Posts", posts_path %>
+  <body class="container mx-auto">
+    <%# <div class="bg-white"> %>
+      <header class="w-9/12 mx-auto flex items-center justify-between flex-wrap bg-indigo-950 rounded-lg p-6 mt-3">
+        <div class="flex items-center flex-shrink-0 text-white mr-6">
+          <%= link_to "Blog", root_path, class: "font-semibold text-xl text-white tracking-tight no-underline" %>
+        </div>
+        <%# <div class="block lg:hidden">
+          <button class="flex items-center px-3 py-2 border rounded text-blue-100 border-teal-400 hover:text-white hover:border-white">
+            <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+          </button>
+        </div> %>
+        <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+          <div class="text-sm lg:flex-grow text-center">
+            <%# <%= link_to "Homepage", root_path, class: "block mt-4 lg:inline-block lg:mt-0 text-blue-100 hover:text-white mr-4" %>
+            <%= link_to "Posts", posts_path, class: "block mt-4 lg:inline-block lg:mt-0 text-blue-100 hover:text-white mr-4" %>
+            <%= link_to "Users", users_path, class: "block mt-4 lg:inline-block lg:mt-0 text-blue-100 hover:text-white mr-4" %>
+          </div>
+          <% if user_signed_in? %>
+            <div>
+                <%= button_to "Log out", session_path, method: :delete, class: "text-white bg-gradient-to-r from-red-600 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-4 py-2 text-center leading-none" %>
+            </div>
+          <% else %>
+            <div>
+                <%= link_to "Sign up", new_user_path, class: "inline-block text-sm px-4 py-2 leading-none rounded text-white mt-4 lg:mt-0" %>
+                <%= link_to "Log in", new_session_path, class: "inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-blue-950 hover:bg-white mt-4 lg:mt-0" %>
+            </div>
+          <% end %>
+        <%# </div> %>
+      </header>
     </div>
 
-    <% if user_signed_in? %>
-      <%= link_to "Edit password", "#" %>
-      <%= button_to "Log out", session_path, method: :delete %>
-    <% else %>
-      <%= link_to "Sign up", new_user_path %>
-      <%= link_to "Log in", new_session_path %>
-    <% end %>
+    <main class="bg-white container mx-auto prose mt-2">
+      <div><%= notice %></div>
+      <div><%= alert %></div>
 
-
-    <%= yield %>
+      <%= yield %>
+    </main>
   </body>
 </html>

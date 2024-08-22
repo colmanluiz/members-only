@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   resource :session
   resources :posts, only: %i[ index new create show ]
 
-  root "main#index"
+  root "posts#index"
 end

@@ -1,16 +1,23 @@
-<h2>Users</h2>
-
-<% @users.each do |user| %>
-
-  <%= link_to user_path(user) do %>
-  <p>
-    <%= user.id %> |
-    <%= user.name %> |
-    <%= user.email %> |
+<main class="container mx-auto prose pt-5">
+  <h1 class="text-center">Users</h1>
+  <% if user_signed_in? %>
+    <% @users.each do |user| %>
+      <div id="user-card" class="grid bg-gray-50 p-3 mt-3 rounded-lg justify-center text-center">
+        <div class="grid gap-2 justify-items-center">
+          <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="profile photo" class="w-36 h-36 rounded-full object-cover">
+          <%= link_to user_path(user), class: "no-underline text-xl font-bold" do %>
+            <span class="text-center"><%= user.name %></span>
+          <% end %>
+          <span class="text-center"><%= user.email %></span>
+          <span class="text-center">Posts: <%= user.posts.count %></span>
+          <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Follow</button>
+        </div>
+      </div>
     <% end %>
-  </p>
-<% end %>
-
-<div>
-  <%# <%= link_to "Create User", new_user_path %>
-</div>
+  <% else %>
+    <div class="text-center mt-5">
+      <p class="text-lg">You need to be logged in to view this content.</p>
+      <%= link_to "Log in", new_session_path, class: "no-underline bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded" %>
+    </div>
+  <% end %>
+</main>
